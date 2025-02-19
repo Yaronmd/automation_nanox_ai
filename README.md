@@ -5,6 +5,7 @@ Automation test for Nanox AI
 ## Table of Contents
 - [Overview](#overview)
 - [Installation](#installation)
+- [Driver Preparation](#driver-preparation)
 - [Execution](#execution)
 
 
@@ -38,7 +39,7 @@ This project automates the testing of an e-commerce web application, focusing on
 2. Install dependencies: ```mvn clean install```
 
 
-## driver Preparation 
+## Driver Preparation 
 ### Option 1: Download the Relevant Chrome Driver
 
 1. Download ChromeDriver from [here](https://googlechromelabs.github.io/chrome-for-testing/).
