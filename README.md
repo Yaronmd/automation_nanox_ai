@@ -3,14 +3,42 @@
 Automation test for Nanox AI
 
 ## Table of Contents
-
+- [Overview](#overview)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Execution](#execution)
+
+
+## Overview
+
+This project automates the testing of an e-commerce web application, focusing on validating the product catalog and shopping cart functionality. The tests are implemented using **Selenium WebDriver**, **Cucumber (BDD framework)**, and **Java**.
+
+## Features Tested
+
+### Main Page
+- Ensuring the main page loads correctly.
+- Validating the title of the main page.
+- Checking if the product table is displayed and contains data.
+
+### Product Categories
+- Navigating to different product categories: `Phones`, `Laptops`, and `Monitors`.
+- Fetching and verifying product details (name, price, description).
+- Ensuring the product table updates according to the selected category.
+
+### Shopping Cart
+- Selecting a random product from a category.
+- Validating product details after selection.
+- Adding the selected product to the shopping cart.
+- Handling and confirming popup messages.
+- Navigating to the cart and verifying that the product was added successfully.
+
 
 ## Installation
 
+1. Clone the repository
+2. Install dependencies: ```mvn clean install```
+
+
+## driver perprtion 
 ### Option 1: Download the Relevant Chrome Driver
 
 1. Download ChromeDriver from [here](https://googlechromelabs.github.io/chrome-for-testing/).
@@ -63,6 +91,12 @@ Automation test for Nanox AI
     ```bash
     docker compose -f docker-compose-v3.yml down
     ```
+
+## Execution
+
+1. ```mvn test``
+2. example for spesific tag: ```mvn test -Dcucumber.options="--tags @sanity"```
+
 
 ### Prerequisites
 
