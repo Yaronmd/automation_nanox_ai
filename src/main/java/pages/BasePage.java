@@ -1,5 +1,6 @@
 
 package pages;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,6 +52,12 @@ public class BasePage {
     public List<WebElement> waitForPresenceOfAllElementsLocatedBy(By locator, Integer timeout) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
+    public Alert waitForAlertPresent(Integer timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+
+        return wait.until(ExpectedConditions.alertIsPresent());
     }
    
     /**

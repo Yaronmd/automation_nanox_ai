@@ -31,6 +31,7 @@
             <scope>test</scope>
         </dependency>
 
+
         <!-- JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -51,7 +52,7 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.3.0</version>
         </dependency>
-        
+
 
     </dependencies>
 

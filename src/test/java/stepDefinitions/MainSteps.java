@@ -3,7 +3,9 @@ package stepDefinitions;
 import io.cucumber.java.en.*;
 import models.Product;
 import org.openqa.selenium.WebDriver;
+import pages.CartPage;
 import pages.MainPage;
+import pages.ProductInfoPage;
 import utils.DriverManager;
 
 import java.util.List;
@@ -11,9 +13,11 @@ import java.util.List;
 public class MainSteps {
     private WebDriver driver = DriverManager.getDriver();
     private MainPage mainPage = new MainPage(driver);
+    private ProductInfoPage productInfoPage = new ProductInfoPage(driver);
+    private CartPage cartPage = new CartPage(driver);
 
     private List<Product> products;
-
+    private Product selectedProduct;
 
     @Given("I navigate to main page")
     public void iOpenTheLoginPage() {
@@ -52,6 +56,37 @@ public class MainSteps {
 
         }
     }
-    
+
+    public Product getSelectedProduct() {
+        return selectedProduct;
+    }
+
+    @When("Select random product")
+    public void selectRandomProduct() {
+        Product randomProduct = mainPage.clickOnRandomProduct(products);
+        assert randomProduct != null;
+        selectedProduct = randomProduct;
+    }
+    @Then("Validate product content after selecting")
+    public void validateProductContent() {
+        assert productInfoPage.validateProductContent(selectedProduct);
+
+    }
+    @When("Click 'Add to cart'")
+    public void clickAddToCart() {
+        assert productInfoPage.addToCart();
+    }
+    @When("Click 'OK' in popup message")
+    public void clickOKInPopupMessage() {
+        assert productInfoPage.clickOKAlert();
+    }
+    @When("Click 'Cart'")
+    public void clickCart() {
+        assert mainPage.clickCartButton();
+    }
+    @Then("Validate product added to cart")
+    public void validateProductAddedToCart() {
+        assert cartPage.validateProductAddedToCart(getSelectedProduct());
+    }
 }
  

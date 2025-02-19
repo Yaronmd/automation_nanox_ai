@@ -9,6 +9,7 @@ import models.Product;
 
 
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ public class MainPage extends BasePage {
     private static Logger logger = Logger.getLogger("MainPage");
     private By titleLabel = By.id("nava");
     private By productsTable = By.xpath("//div//*[contains(@class,'card-block')]");
+    private By cartButtonNavBar = By.id("cartur");
 
     private By phoneCategoryButton = By.xpath("//a[text()='Phones']");
     private By laptopCategoryButton = By.xpath("//a[text()='Laptops']");
@@ -31,6 +33,17 @@ public class MainPage extends BasePage {
     public boolean isTitleDisplayed(){
         return this.waitForElementPresence(titleLabel,10).isDisplayed();
         
+    }
+    public boolean clickCartButton(){
+        try{
+            this.waitForElementPresence(cartButtonNavBar,5).click();
+            logger.info("Clicked on cart button");
+            return true;
+        }catch (Exception e){
+            logger.info("Failed to click on cart button"+e.getMessage());
+            return false;
+        }
+
     }
 
     public boolean clickOnCategory(String category){
@@ -75,5 +88,32 @@ public class MainPage extends BasePage {
         return products;
 
     }
+
+    public boolean clickOnProduct(String productName){
+        if (productName.isEmpty()){
+            return false;
+        }
+        By selectedProduct =  By.xpath("//a[text()='"+productName+"']");
+        try{
+            this.waitForElementPresence(selectedProduct,10).click();
+        }catch (Exception e){
+            logger.warning("Failed to select product:"+productName+" Exception:"+e.getMessage());
+            return false;
+        }
+       logger.info("Clicked on product "+productName);
+        return true;
+    }
+
+    public Product clickOnRandomProduct(List<Product> products){
+        Random random = new Random();
+        Product randomItem = products.get(random.nextInt(products.size()));
+        logger.info("selected random product "+randomItem.getName());
+        if (this.clickOnProduct(randomItem.getName())){
+            return randomItem;
+        }
+        return null;
+
+    }
+
 
 }
