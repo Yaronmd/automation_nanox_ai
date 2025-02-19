@@ -14,6 +14,7 @@ Feature: Main page functionality
     When I select category "Laptops"
     And Get products
     Then Validate product table length
+    And Validate products content (name,price,description)
 
   @sanity
   Scenario: Validate Laptops table content exist
@@ -22,3 +23,4 @@ Feature: Main page functionality
     When I select category "Monitors"
     And Get products
     Then Validate product table length
+    And Validate products content (name,price,description)

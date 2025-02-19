@@ -40,6 +40,18 @@ public class MainSteps {
         assert mainPage.clickOnCategory(category);
     }
 
+    @Then("Validate products content \\(name,price,description)")
+    public void validateProductTableLength() {
+        for (Product product : products) {
+            System.out.println("Validating product: " + product);
 
+            assert !product.getName().isEmpty() : "Error: Product name is empty! Product details: " + product;
+            assert !product.getPrice().isEmpty() : "Error: Product price is empty! Product details: " + product;
+            assert product.getPriceNumber() > 0 : "Error: Product price number is not greater than 0! Product details: " + product;
+            assert !product.getDescription().isEmpty() : "Error: Product description is empty! Product details: " + product;
+
+        }
+    }
+    
 }
  

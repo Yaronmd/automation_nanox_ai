@@ -25,6 +25,15 @@ public class Product {
         return price;
     }
 
+    public Integer getPriceNumber() {
+        String[] temp = price.split("\\$");
+
+        if (temp.length < 2) {
+            throw new NumberFormatException("Price format is incorrect: " + price);
+        }
+
+        return Integer.parseInt(temp[1].trim());
+    }
     public void setPrice(String price) {
         this.price = price;
     }
