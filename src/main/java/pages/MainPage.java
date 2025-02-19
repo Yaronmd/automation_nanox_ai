@@ -3,10 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 
-import main.java.pages.BasePage;
 import models.Product;
 
 
@@ -19,8 +17,12 @@ import java.util.Arrays;
 public class MainPage extends BasePage {
     private static Logger logger = Logger.getLogger("MainPage");
     private By titleLabel = By.id("nava");
-
     private By productsTable = By.xpath("//div//*[contains(@class,'card-block')]");
+
+    private By phoneCategoryButton = By.xpath("//a[text()='Phones']");
+    private By laptopCategoryButton = By.xpath("//a[text()='Laptops']");
+    private By monitorsCategoryButton =  By.xpath("//a[text()='Monitors']");
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -30,6 +32,28 @@ public class MainPage extends BasePage {
         return this.waitForElementPresence(titleLabel,10).isDisplayed();
         
     }
+
+    public boolean clickOnCategory(String category){
+
+            By selectedCategory;
+
+            switch (category) {
+                case "Laptops":
+                    selectedCategory = laptopCategoryButton;
+                    break;
+                case "Phones":
+                    selectedCategory = phoneCategoryButton;
+                    break;
+                case "Monitors":
+                    selectedCategory = monitorsCategoryButton;
+                    break;
+                default:
+                    return false;
+            }
+
+            this.clickWhenReady(selectedCategory,10);
+            return true;
+        }
 
     public List<Product> getProductsTable() {
         List<Product> products = new ArrayList<>();
@@ -43,7 +67,7 @@ public class MainPage extends BasePage {
             }
             else {
                 logger.warning("missing details for product: "+ temp);
-                return  null;
+                return null;
             }
         }
         
@@ -51,4 +75,5 @@ public class MainPage extends BasePage {
         return products;
 
     }
+
 }

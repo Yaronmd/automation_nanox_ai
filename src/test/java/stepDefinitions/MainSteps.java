@@ -35,6 +35,11 @@ public class MainSteps {
         assert !products.isEmpty();
     }
 
+    @When("I select category {string}")
+    public void selectCategory(String category) {
+        assert mainPage.clickOnCategory(category);
+    }
+
 
 }
  
