@@ -95,7 +95,7 @@ This project automates the testing of an e-commerce web application, focusing on
 
 ## Execution
 
-1. ```mvn test``
+1. ```mvn test```
 2. example for spesific tag: ```mvn test -Dcucumber.options="--tags @sanity"```
 
 
