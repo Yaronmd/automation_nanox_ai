@@ -1,6 +1,4 @@
-# Project Title
-
-Automation test for Nanox AI
+# Automation test for Nanox AI
 
 ## Table of Contents
 - [Overview](#overview)
