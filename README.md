@@ -81,6 +81,8 @@ This project automates the testing of an e-commerce web application, focusing on
           - "4444:4444"
     ```
 
+    for ant case need to commentin/out in src/main/java/utils/DriverManager.java
+
 3. To start the Selenium Hub and Chrome node, run:
     ```bash
     docker compose -f docker-compose-v3.yml up
