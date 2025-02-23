@@ -38,6 +38,7 @@ This project automates the testing of an e-commerce web application, focusing on
 
 
 ## Driver Preparation 
+   ### for any case need to comment in/out in src/main/java/utils/DriverManager.java
 ### Option 1: Download the Relevant Chrome Driver
 
 1. Download ChromeDriver from [here](https://googlechromelabs.github.io/chrome-for-testing/).
@@ -81,7 +82,7 @@ This project automates the testing of an e-commerce web application, focusing on
           - "4444:4444"
     ```
 
-    for ant case need to commentin/out in src/main/java/utils/DriverManager.java
+ 
 
 3. To start the Selenium Hub and Chrome node, run:
     ```bash
